@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/cirnovsky/Documents/code/t'
+let g:netrw_dirhist_4='/home/cirnovsky/Documents/blog'
+let g:netrw_dirhist_3='/home/cirnovsky/Documents'
+let g:netrw_dirhist_2='/home/cirnovsky/Documents/blog'
+let g:netrw_dirhist_1='/home/cirnovsky'

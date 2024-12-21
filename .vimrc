@@ -7,21 +7,15 @@ if (empty($TMUX) && getenv('TERM_PROGRAM') != 'Apple_Terminal') " {{{
   endif
 endif " }}}
 call plug#begin() " {{{
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug '~/my-prototype-plugin'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
 Plug 'morhetz/gruvbox'
-Plug 'tribela/vim-transparent'
 Plug 'tpope/vim-commentary'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end() " }}}
 syntax on
 syntax enable
-set undodir="~/.vim/undo"
+set undodir=~/.vim/undo
 set nu
 set laststatus=2
 set noswapfile
@@ -58,13 +52,12 @@ func Skp(bra)
   return getline('.')[col('.') - 1] == a:bra ? "\<ESC>la" : a:bra
 endfunc
 
-let g:airline#extensions#tabline#enabled = 1
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-      \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+" https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.vim {{{
 
-" CoC config {{{
+" May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
+" utf-8 byte sequence
 set encoding=utf-8
+" Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
 
@@ -81,16 +74,16 @@ set signcolumn=yes
 " no select by `"suggest.noselect": true` in your configuration file
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config
-inoremap <silent><expr> <C-j>
+inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -116,7 +109,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> <C-S-K> :call ShowDocumentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
