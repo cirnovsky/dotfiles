@@ -5,6 +5,7 @@ Plug 'tpope/vim-commentary'
 Plug 'github/copilot.vim'
 call plug#end()
 syntax off
+set incsearch
 set mouse=a
 set undodir=~/.vim/undo
 set nu
