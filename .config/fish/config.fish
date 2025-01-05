@@ -8,4 +8,5 @@ fish_vi_key_bindings
 alias dtf 'cd ~/.dotfiles'
 alias cod 'cd ~/Documents/projects/code'
 alias blog 'cd ~/Documents/projects/blog'
+alias pj 'cd ~/Documents/projects'
 set -U fish_user_paths $fish_user_paths ~/.npm-g/bin

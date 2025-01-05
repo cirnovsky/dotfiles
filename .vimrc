@@ -30,6 +30,7 @@ inoremap [ []<ESC>i
 inoremap {<space> {}<ESC>i<space><space><ESC>i
 inoremap {<CR> {<CR>}<ESC>O
 inoremap /* /**/<ESC>hi
+inoremap /*<space> /*<space><space>*/<ESC>2hi
 inoremap " <c-r>=Fuck("\"")<CR>
 inoremap ' <c-r>=Fuck("'")<CR>
 inoremap ) <c-r>=Skp(")")<CR>
