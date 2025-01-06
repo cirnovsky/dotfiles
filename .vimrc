@@ -4,6 +4,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'github/copilot.vim'
 call plug#end()
+
 syntax off
 set incsearch
 set mouse=a
@@ -17,7 +18,8 @@ set foldmarker={{{,}}}
 set undofile
 set autoread
 set clipboard=unnamed
-colo darkblue
+colo evening
+
 noremap gb #*cgn
 inoremap <F11> <ESC>:w<CR>:!_cr %<CR>
 inoremap <F10> <ESC>:!_run %:r<CR>
