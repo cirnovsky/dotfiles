@@ -1,1 +1,0 @@
-/home/cirnovsky/.dotfiles/.vim
