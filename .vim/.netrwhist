@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =8
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/cirnovsky/迅雷下载'
 let g:netrw_dirhist_8='/home/cirnovsky/Documents/projects/blblmusic/src'
 let g:netrw_dirhist_7='/home/cirnovsky/Documents/projects/blblmusic'
 let g:netrw_dirhist_6='/home/cirnovsky/Documents/projects/blblmusic/src'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_3='/home/cirnovsky/Documents/projects/blblmusic'
 let g:netrw_dirhist_2='/home/cirnovsky/Documents/projects/blblmusic/src'
 let g:netrw_dirhist_1='/home/cirnovsky/Documents/projects/blblmusic'
 let g:netrw_dirhist_0='/home/cirnovsky/Documents/projects/blblmusic/src'
-let g:netrw_dirhist_9='/home/cirnovsky/Documents/projects/blblmusic'
