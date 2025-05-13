@@ -1,14 +1,10 @@
-syntax off
+syntax on
 set incsearch
 set mouse=a
 set undodir=~/.vim/undo
-:set nu
-set laststatus=2
 set noswapfile
 set nobackup
-set foldmethod=marker
-set foldmarker={{{,}}}
 set undofile
 set autoread
 set clipboard=unnamed
-colo evening
+filetype indent on
