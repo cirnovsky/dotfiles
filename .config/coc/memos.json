@@ -1,0 +1,11 @@
+{
+  "coc-json|global": {
+    "json-schema-cache": {
+      "https://json.schemastore.org/compile-commands.json": {
+        "etag": "W/\"68fa92c4-81f\"",
+        "fileName": "d39aec69debdd6d26331e1de0cfddea3.schema.json",
+        "updateTime": 1761283149620
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+[[language]]
+name = "cpp"
+indent = { tab-width = 8, unit = "\t" }
+
+[language-server.clangd.config]
+fallbackFlags = ["-std=c++20"]
+
+[[language]]
+name = "c"
+indent = { tab-width = 8, unit = "\t" }

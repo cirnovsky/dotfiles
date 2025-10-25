@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/cirnovsky/repos/code'
+let g:netrw_dirhist_9='/Users/cirnovsky/.vim/plugged/vim-dict/dict'
+let g:netrw_dirhist_8='/Users/cirnovsky/.vim/plugged/vim-dict'
+let g:netrw_dirhist_7='/Users/cirnovsky/repos/dungeontale/src/game'
+let g:netrw_dirhist_6='/Users/cirnovsky/repos/dungeontale/src'
+let g:netrw_dirhist_5='/Users/cirnovsky/repos/dungeontale'
+let g:netrw_dirhist_4='/Users/cirnovsky/repos/dungeontale/obj'
+let g:netrw_dirhist_3='/Users/cirnovsky/repos/dungeontale/obj/game'
+let g:netrw_dirhist_2='/Users/cirnovsky/repos/dungeontale/obj'
+let g:netrw_dirhist_1='/Users/cirnovsky/repos/dungeontale'
