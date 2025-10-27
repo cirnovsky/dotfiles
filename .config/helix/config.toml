@@ -1,7 +1,12 @@
 theme = "gruvbox"
 
+[editor]
+auto-pairs = true
+bufferline = "always"
+completion-timeout = 50
+
 [editor.soft-wrap]
 enable = true
 
 [editor.file-picker]
-hidden = false
+hidden = true
