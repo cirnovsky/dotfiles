@@ -1,3 +1,6 @@
 [submodule ".vim/plugged/coc.nvim"]
 	path = .vim/plugged/coc.nvim
 	url = https://github.com/neoclide/coc.nvim
+[submodule ".vim/plugged/vim-auto-popmenu"]
+	path = .vim/plugged/vim-auto-popmenu
+	url = https://github.com/skywind3000/vim-auto-popmenu

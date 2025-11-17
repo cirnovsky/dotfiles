@@ -1,4 +1,4 @@
-theme = "gruvbox"
+# theme = "gruvbox"
 
 [editor]
 auto-pairs = true
@@ -10,3 +10,6 @@ enable = true
 
 [editor.file-picker]
 hidden = true
+
+[keys.normal.g]
+k = ":bc"
