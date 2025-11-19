@@ -42,7 +42,7 @@ nmap gk :GotoWord<CR>
 " Plugin Installation {{{
 call plug#begin()
 Plug 'skywind3000/vim-auto-popmenu'
-Plug 'skywind3000/vim-dict'
+Plug 'cirnovsky/vim-dict'
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 Plug 'cirnovsky/vim-gotoword'

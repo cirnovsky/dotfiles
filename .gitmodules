@@ -4,3 +4,6 @@
 [submodule ".vim/plugged/vim-auto-popmenu"]
 	path = .vim/plugged/vim-auto-popmenu
 	url = https://github.com/skywind3000/vim-auto-popmenu
+[submodule ".vim/plugged/vim-dict"]
+	path = .vim/plugged/vim-dict
+	url = https://github.com/cirnovsky/vim-dict
