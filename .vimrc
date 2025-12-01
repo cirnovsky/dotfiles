@@ -18,6 +18,7 @@ set undofile
 set foldmethod=marker
 set foldmarker={{{,}}}
 nmap <space><space> za
+colo morning
 " }}}
 
 " Auto-Completion Setup {{{
@@ -67,5 +68,7 @@ set shortmess+=c
 let g:airline#extensions#tabline#enabled = 1
 " }}}
 
+" competitve programming {{{
 autocmd FileType cpp nmap <C-k> :w<CR>:!ccr % in<CR>
 autocmd FileType python nmap <C-k> :w<CR>:!python3 % < in<CR>
+" }}}
