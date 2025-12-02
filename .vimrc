@@ -17,8 +17,7 @@ set undofile
 
 set foldmethod=marker
 set foldmarker={{{,}}}
-nmap <space><space> za
-colo morning
+colo pablo
 " }}}
 
 " Auto-Completion Setup {{{
@@ -28,16 +27,13 @@ nmap <silent> <C-t> <C-t>
 " }}}
 
 " Navigation Setup {{{
-nmap ? :find ./**/*
+nmap <space>f :find ./**/*
 
-nmap <C-d> <C-d>zz
-nmap <C-u> <C-u>zz
+nmap <space>n :bn!<CR>
+nmap <space>p :bp!<CR>
+nmap <space>w :bd<CR>
 
-nmap gn :bn!<CR>
-nmap gp :bp!<CR>
-nmap gw :bd<CR>
-
-nmap gk :GotoWord<CR>
+nmap <space>k :GotoWord<CR>
 " }}}
 
 " Plugin Installation {{{
@@ -45,7 +41,6 @@ call plug#begin()
 Plug 'skywind3000/vim-auto-popmenu'
 Plug 'cirnovsky/vim-dict'
 Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
 Plug 'cirnovsky/vim-gotoword'
 call plug#end()
 " }}}
@@ -66,9 +61,10 @@ set shortmess+=c
 
 " <vim-airline> {{{
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 " }}}
 
-" competitve programming {{{
+" CP RUNNER {{{
 autocmd FileType cpp nmap <C-k> :w<CR>:!ccr % in<CR>
 autocmd FileType python nmap <C-k> :w<CR>:!python3 % < in<CR>
 " }}}
