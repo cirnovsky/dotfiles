@@ -4,6 +4,8 @@ o.swapfile, o.undofile, o.undodir = false, true, os.getenv("HOME") .. "/.vim/und
 o.foldmethod, o.foldmarker = "marker", "{{{,}}}"
 vim.keymap.set("n", "gn", "<cmd>bn!<CR>")
 vim.keymap.set("n", "gp", "<cmd>bp!<CR>")
+vim.g['airline#extensions#tabline#enabled'] = 1
+vim.g['airline_powerline_fonts'] = 1
 
 -- CP RUNNER (Autocmd + Keymap)
 vim.api.nvim_create_autocmd("FileType", { pattern = { "cpp", "python" }, callback = function(args)
@@ -20,7 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- PLUGINS & CONFIG
 require("lazy").setup({
-	"neovim/nvim-lspconfig", "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip",
+	"neovim/nvim-lspconfig", "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "vim-airline/vim-airline",
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
@@ -52,3 +54,4 @@ require("lazy").setup({
 
 -- KEYMAPS
 pcall(function() require("config.keymaps").setup() end)
+
