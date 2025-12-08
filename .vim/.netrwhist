@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/cirnovsky/repos/guescus'
+let g:netrw_dirhist_5='/Users/cirnovsky/repos/dotfiles/.vim/plugged/vim-bufferline/autoload'
+let g:netrw_dirhist_4='/Users/cirnovsky/repos/dotfiles/.vim/plugged/vim-bufferline'
 let g:netrw_dirhist_3='/Users/cirnovsky/repos/glog/src/app/posts'
 let g:netrw_dirhist_2='/Users/cirnovsky/repos/glog/src/app'
 let g:netrw_dirhist_1='/Users/cirnovsky/repos/glog/src'
@@ -7,6 +10,3 @@ let g:netrw_dirhist_0='/Users/cirnovsky/repos/glog'
 let g:netrw_dirhist_9='/Users/cirnovsky/repos/glog/src/app/posts'
 let g:netrw_dirhist_8='/Users/cirnovsky/repos/glog/src/app'
 let g:netrw_dirhist_7='/Users/cirnovsky/repos/glog/src'
-let g:netrw_dirhist_6='/Users/cirnovsky/repos/glog'
-let g:netrw_dirhist_5='/Users/cirnovsky/repos/glog/src/app/posts'
-let g:netrw_dirhist_4='/Users/cirnovsky/repos/glog/src/app'

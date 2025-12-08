@@ -13,3 +13,6 @@
 [submodule ".vim/plugged/vim-bufferline"]
 	path = .vim/plugged/vim-bufferline
 	url = https://github.com/cirnovsky/vim-bufferline
+[submodule ".vim/plugged/copilot.vim"]
+	path = .vim/plugged/copilot.vim
+	url = https://github.com/github/copilot.vim
