@@ -1,7 +1,4 @@
-# theme = "gruvbox"
-
 [editor]
-auto-pairs = true
 bufferline = "always"
 completion-timeout = 50
 
