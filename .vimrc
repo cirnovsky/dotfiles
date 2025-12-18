@@ -6,7 +6,7 @@ set si
 set ci
 set mouse=a
 set is
-	set fo=cro
+set fo=cro
 set re=0
 set nosc
 set nocul
@@ -78,7 +78,7 @@ function! CopilotToggle()
 		let b:copilot_enabled = v:true
 	endif
 endfunction
-imap <silent> <C-L> <esc>:call CopilotToggle()<CR>i
+nmap <silent> <C-L> <esc>:call CopilotToggle()<CR>
 " }}}
 
 " CP RUNNER {{{

@@ -5,11 +5,11 @@ set ai
 set si
 set ci
 set mouse=a
-set incsearch
-set formatoptions=cro
+set is
+	set fo=cro
 set re=0
-set noshowcmd
-set nocursorline
+set nosc
+set nocul
 set noswapfile
 
 set undodir=~/.vim/undo
@@ -18,6 +18,8 @@ set undofile
 set foldmethod=marker
 set foldmarker={{{,}}}
 colo pablo
+
+autocmd FileType cpp set kp=cppman
 " }}}
 
 " Auto-Completion Setup {{{
@@ -43,6 +45,7 @@ Plug 'cirnovsky/vim-dict'
 Plug 'cirnovsky/vim-gotoword'
 Plug 'cirnovsky/vim-bufferline'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'github/copilot.vim'
 call plug#end()
 " }}}
 
@@ -58,6 +61,24 @@ set completeopt=menu,menuone,noselect
 
 " 禁止在下方显示一些啰嗦的提示
 set shortmess+=c
+" }}}
+
+" <copilot.vim> {{{
+let g:copilot_filetypes = { '*': v:false }
+let g:copilot_no_tab_map = v:true
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+function! CopilotToggle()
+	if exists("b:copilot_enabled")
+		if b:copilot_enabled
+			let b:copilot_enabled = v:false
+		else
+			let b:copilot_enabled = v:true
+		endif
+	else
+		let b:copilot_enabled = v:true
+	endif
+endfunction
+imap <silent> <C-L> <esc>:call CopilotToggle()<CR>i
 " }}}
 
 " CP RUNNER {{{
