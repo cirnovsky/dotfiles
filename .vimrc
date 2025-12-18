@@ -1,3 +1,4 @@
+
 " Basic Setup {{{
 syntax enable
 filetype plugin indent on
@@ -40,27 +41,11 @@ nmap <space>k :GotoWord<CR>
 
 " Plugin Installation {{{
 call plug#begin()
-Plug 'skywind3000/vim-auto-popmenu'
-Plug 'cirnovsky/vim-dict'
 Plug 'cirnovsky/vim-gotoword'
 Plug 'cirnovsky/vim-bufferline'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'github/copilot.vim'
+Plug 'yegappan/lsp'
 call plug#end()
-" }}}
-
-" <vim-auto-popmenu> {{{
-" 设定需要生效的文件类型，如果是 "*" 的话，代表所有类型
-let g:apc_enable_ft = {"*":1}
-
-" 设定从字典文件以及当前打开的文件里收集补全单词，详情看 ':help cpt'
-set cpt=.,k,w,b,t
-
-" 不要自动选中第一个选项。
-set completeopt=menu,menuone,noselect
-
-" 禁止在下方显示一些啰嗦的提示
-set shortmess+=c
 " }}}
 
 " <copilot.vim> {{{
@@ -68,17 +53,42 @@ let g:copilot_filetypes = { '*': v:false }
 let g:copilot_no_tab_map = v:true
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 function! CopilotToggle()
-	if exists("b:copilot_enabled")
-		if b:copilot_enabled
-			let b:copilot_enabled = v:false
-		else
-			let b:copilot_enabled = v:true
-		endif
-	else
-		let b:copilot_enabled = v:true
-	endif
+    if exists("b:copilot_enabled")
+        if b:copilot_enabled
+            let b:copilot_enabled = v:false
+        else
+            let b:copilot_enabled = v:true
+        endif
+    else
+        let b:copilot_enabled = v:true
+    endif
 endfunction
 nmap <silent> <C-L> <esc>:call CopilotToggle()<CR>
+" }}}
+
+" <lsp> {{{
+let lspServers = [#{
+    \    name: 'pylsp',
+    \    filetype: ['python'],
+    \    path: 'pylsp',
+    \    args: []
+    \  },
+    \ #{
+    \    name: 'clangd',
+    \    filetype: ['c', 'cpp'],
+    \    path: 'clangd',
+    \    args: ['--background-index']
+    \  }]
+
+autocmd User LspSetup call LspAddServer(lspServers)
+
+nnoremap gd <cmd>LspGotoDefinition<CR>
+nnoremap gr <cmd>LspPeekReferences<CR>
+nnoremap gi <cmd>LspGotoImplementation<CR>
+nnoremap K <cmd>LspHover<CR>
+nnoremap <leader>rn <cmd>LspRename<CR>
+nnoremap [d <cmd>LspDiagPrev<CR>
+nnoremap ]d <cmd>LspDiagNext<CR>
 " }}}
 
 " CP RUNNER {{{

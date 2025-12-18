@@ -16,3 +16,6 @@
 [submodule ".vim/plugged/copilot.vim"]
 	path = .vim/plugged/copilot.vim
 	url = https://github.com/github/copilot.vim
+[submodule ".vim/plugged/lsp"]
+	path = .vim/plugged/lsp
+	url = https://github.com/yegappan/lsp
