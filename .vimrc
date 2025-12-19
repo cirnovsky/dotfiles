@@ -7,7 +7,7 @@ set si
 set ci
 set mouse=a
 set is
-set fo=cro
+	set fo=cro
 set re=0
 set nosc
 set nocul
@@ -53,32 +53,32 @@ let g:copilot_filetypes = { '*': v:false }
 let g:copilot_no_tab_map = v:true
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 function! CopilotToggle()
-    if exists("b:copilot_enabled")
-        if b:copilot_enabled
-            let b:copilot_enabled = v:false
-        else
-            let b:copilot_enabled = v:true
-        endif
-    else
-        let b:copilot_enabled = v:true
-    endif
+	if exists("b:copilot_enabled")
+		if b:copilot_enabled
+			let b:copilot_enabled = v:false
+		else
+			let b:copilot_enabled = v:true
+		endif
+	else
+		let b:copilot_enabled = v:true
+	endif
 endfunction
 nmap <silent> <C-L> <esc>:call CopilotToggle()<CR>
 " }}}
 
 " <lsp> {{{
 let lspServers = [#{
-    \    name: 'pylsp',
-    \    filetype: ['python'],
-    \    path: 'pylsp',
-    \    args: []
-    \  },
-    \ #{
-    \    name: 'clangd',
-    \    filetype: ['c', 'cpp'],
-    \    path: 'clangd',
-    \    args: ['--background-index']
-    \  }]
+			\    name: 'pylsp',
+			\    filetype: ['python'],
+			\    path: 'pylsp',
+			\    args: []
+			\  },
+			\ #{
+			\    name: 'clangd',
+			\    filetype: ['c', 'cpp'],
+			\    path: 'clangd',
+			\    args: ['--background-index']
+			\  }]
 
 autocmd User LspSetup call LspAddServer(lspServers)
 
@@ -89,9 +89,4 @@ nnoremap K <cmd>LspHover<CR>
 nnoremap <leader>rn <cmd>LspRename<CR>
 nnoremap [d <cmd>LspDiagPrev<CR>
 nnoremap ]d <cmd>LspDiagNext<CR>
-" }}}
-
-" CP RUNNER {{{
-autocmd FileType cpp nmap <C-k> :w<CR>:!ccr % in<CR>
-autocmd FileType python nmap <C-k> :w<CR>:!python3 % < in<CR>
 " }}}
