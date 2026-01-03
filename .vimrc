@@ -7,7 +7,7 @@ set si
 set ci
 set mouse=a
 set is
-	set fo=cro
+set fo=cro
 set re=0
 set nosc
 set nocul
@@ -23,12 +23,6 @@ colo pablo
 autocmd FileType cpp set kp=cppman
 " }}}
 
-" Auto-Completion Setup {{{
-set tags=./tags;,tags
-nmap <silent> <C-]> <C-]>
-nmap <silent> <C-t> <C-t>
-" }}}
-
 " Navigation Setup {{{
 nmap ? :find ./**/*
 
@@ -42,8 +36,9 @@ nmap <space>k :GotoWord<CR>
 " Plugin Installation {{{
 call plug#begin()
 Plug 'cirnovsky/vim-gotoword'
-Plug 'cirnovsky/vim-bufferline'
+Plug 'vim-airline/vim-airline'
 Plug 'github/copilot.vim'
+Plug 'tpope/vim-commentary'
 Plug 'yegappan/lsp'
 call plug#end()
 " }}}
@@ -79,7 +74,6 @@ let lspServers = [#{
 			\    path: 'clangd',
 			\    args: ['--background-index']
 			\  }]
-
 autocmd User LspSetup call LspAddServer(lspServers)
 
 nnoremap gd <cmd>LspGotoDefinition<CR>
@@ -90,3 +84,8 @@ nnoremap <leader>rn <cmd>LspRename<CR>
 nnoremap [d <cmd>LspDiagPrev<CR>
 nnoremap ]d <cmd>LspDiagNext<CR>
 " }}}
+
+""" <vim-airline> {{{
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+""" }}}

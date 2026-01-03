@@ -19,3 +19,6 @@
 [submodule ".vim/plugged/lsp"]
 	path = .vim/plugged/lsp
 	url = https://github.com/yegappan/lsp
+[submodule ".vim/plugged/vim-airline"]
+	path = .vim/plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline
