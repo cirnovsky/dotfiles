@@ -22,6 +22,7 @@ colo pablo
 autocmd FileType cpp set kp=cppman
 
 let g:netrw_liststyle=3
+let g:airline#extensions#tabline#enabled=1
 " }}}
 
 " Auto-Completion Setup {{{
