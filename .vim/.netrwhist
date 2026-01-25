@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/cirnovsky/repos/git'
 let g:netrw_dirhist_2='/home/cirnovsky/repos/dotfiles'
 let g:netrw_dirhist_1='/home/cirnovsky/repos/dotfiles/.vim'
 let g:netrw_dirhist_0='/home/cirnovsky/repos/dotfiles'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_7='/home/cirnovsky/repos/dotfiles/.vim'
 let g:netrw_dirhist_6='/home/cirnovsky/repos/dotfiles'
 let g:netrw_dirhist_5='/home/cirnovsky/repos/git'
 let g:netrw_dirhist_4='/home/cirnovsky/repos/git/builtin'
-let g:netrw_dirhist_3='/home/cirnovsky/repos/git'

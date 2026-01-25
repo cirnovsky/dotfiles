@@ -45,10 +45,11 @@ call plug#begin()
 Plug 'skywind3000/vim-auto-popmenu'
 Plug 'cirnovsky/vim-dict'
 Plug 'cirnovsky/vim-gotoword'
-Plug 'cirnovsky/vim-bufferline'
+Plug 'vim-airline/vim-airline'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'github/copilot.vim'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'tpope/vim-commentary'
 call plug#end()
 " }}}
 
