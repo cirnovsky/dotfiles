@@ -35,7 +35,7 @@ nmap <space>n :bn!<CR>
 nmap <space>p :bp!<CR>
 nmap <space>w :bd<CR>
 
-nmap <space>k :GotoWord<CR>
+nmap <space>r <cmd>cope<CR><cmd>AsyncRun 
 " }}}
 
 " Plugin Installation {{{
@@ -46,6 +46,7 @@ Plug 'cirnovsky/vim-gotoword'
 Plug 'cirnovsky/vim-bufferline'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'github/copilot.vim'
+Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 " }}}
 
@@ -79,9 +80,4 @@ function! CopilotToggle()
 	endif
 endfunction
 nmap <silent> <C-L> <esc>:call CopilotToggle()<CR>
-" }}}
-
-" CP RUNNER {{{
-autocmd FileType cpp nmap <C-k> :w<CR>:!ccr % in<CR>
-autocmd FileType python nmap <C-k> :w<CR>:!python3 % < in<CR>
 " }}}

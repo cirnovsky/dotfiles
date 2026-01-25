@@ -16,3 +16,6 @@
 [submodule ".vim/plugged/copilot.vim"]
 	path = .vim/plugged/copilot.vim
 	url = https://github.com/github/copilot.vim
+[submodule ".vim/plugged/asyncrun.vim"]
+	path = .vim/plugged/asyncrun.vim
+	url = https://github.com/skywind3000/asyncrun.vim
