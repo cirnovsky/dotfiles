@@ -20,6 +20,8 @@ set foldmarker={{{,}}}
 colo pablo
 
 autocmd FileType cpp set kp=cppman
+
+let g:netrw_liststyle=3
 " }}}
 
 " Auto-Completion Setup {{{
