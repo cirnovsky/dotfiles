@@ -1,4 +1,3 @@
-
 " Basic Setup {{{
 syntax enable
 filetype plugin indent on
@@ -21,6 +20,8 @@ set foldmarker={{{,}}}
 colo pablo
 
 autocmd FileType cpp set kp=cppman
+
+let g:netrw_liststyle=3
 " }}}
 
 " Navigation Setup {{{
@@ -31,6 +32,8 @@ nmap <space>p :bp!<CR>
 nmap <space>w :bd<CR>
 
 nmap <space>k :GotoWord<CR>
+
+nmap <space>r :copen<CR>:AsyncRun 
 " }}}
 
 " Plugin Installation {{{
@@ -40,6 +43,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'github/copilot.vim'
 Plug 'tpope/vim-commentary'
 Plug 'yegappan/lsp'
+Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 " }}}
 
@@ -85,7 +89,6 @@ nnoremap [d <cmd>LspDiagPrev<CR>
 nnoremap ]d <cmd>LspDiagNext<CR>
 " }}}
 
-""" <vim-airline> {{{
+" <vim-airline> {{{
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-""" }}}
+" }}}

@@ -22,3 +22,6 @@
 [submodule ".vim/plugged/vim-airline"]
 	path = .vim/plugged/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+[submodule ".vim/plugged/asyncrun.vim"]
+	path = .vim/plugged/asyncrun.vim
+	url = https://github.com/skywind3000/asyncrun.vim
