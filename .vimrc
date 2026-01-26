@@ -1,4 +1,4 @@
-" Basic Setup {{{
+" Basics {{{
 syntax enable
 filetype plugin indent on
 set ai
@@ -23,15 +23,14 @@ autocmd FileType cpp set kp=cppman
 
 let g:netrw_liststyle=3
 let g:airline#extensions#tabline#enabled=1
-" }}}
 
-" Auto-Completion Setup {{{
+" Ctags
 set tags=./tags;,tags
 nmap <silent> <C-]> <C-]>
 nmap <silent> <C-t> <C-t>
 " }}}
 
-" Navigation Setup {{{
+" Keymaps {{{
 nmap ? :find ./**/*
 
 nmap <space>n :bn!<CR>
@@ -41,7 +40,7 @@ nmap <space>w :bd<CR>
 nmap <space>r <cmd>cope<CR><cmd>AsyncRun 
 " }}}
 
-" Plugin Installation {{{
+" Plugins {{{
 call plug#begin()
 Plug 'skywind3000/vim-auto-popmenu'
 Plug 'cirnovsky/vim-dict'
