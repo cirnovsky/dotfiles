@@ -66,7 +66,7 @@ nmap <silent> <C-L> <esc>:call CopilotToggle()<CR>
 " }}}
 
 " <lsp> {{{
-let lspServers = [#{
+let lspServers = [	  #{
 			\    name: 'pylsp',
 			\    filetype: ['python'],
 			\    path: 'pylsp',
@@ -77,7 +77,9 @@ let lspServers = [#{
 			\    filetype: ['c', 'cpp'],
 			\    path: 'clangd',
 			\    args: ['--background-index']
-			\  }]
+			\  },
+			\ ]
+
 autocmd User LspSetup call LspAddServer(lspServers)
 
 nnoremap gd <cmd>LspGotoDefinition<CR>
