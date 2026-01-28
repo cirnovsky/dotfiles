@@ -19,3 +19,6 @@
 [submodule ".vim/plugged/asyncrun.vim"]
 	path = .vim/plugged/asyncrun.vim
 	url = https://github.com/skywind3000/asyncrun.vim
+[submodule ".vim/plugged/lsp"]
+	path = .vim/plugged/lsp
+	url = https://github.com/yegappan/lsp
