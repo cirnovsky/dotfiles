@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/cirnovsky/test'
+let g:netrw_dirhist_8='/Users/cirnovsky/test/mod'
+let g:netrw_dirhist_7='/Users/cirnovsky/test'
+let g:netrw_dirhist_6='/Users/cirnovsky/repos/neovim'
+let g:netrw_dirhist_5='/Users/cirnovsky/repos/neovim/src/nvim'
+let g:netrw_dirhist_4='/Users/cirnovsky/repos/neovim/src'
+let g:netrw_dirhist_3='/Users/cirnovsky/repos/neovim'
+let g:netrw_dirhist_2='/Users/cirnovsky/repos/dotfiles/.git'
+let g:netrw_dirhist_1='/Users/cirnovsky/repos/dotfiles'

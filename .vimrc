@@ -6,11 +6,9 @@ set ai si ci mouse=a is fo=cro re=0 nosc nocul noswapfile hid
 set tags=./tags;,tags
 set undodir=~/.vim/undo undofile
 set foldmethod=marker foldmarker={{{,}}}
-" let g:airline#extensions#tabline#enabled=1
 
-let g:apc_enable_ft = {"*":1} " 设定需要生效的文件类型，如果是 '*' 的话，代表所有类型
+let g:apc_enable_ft = {"*":1}
 set cpt=.,k,w,b,t cot=menu,menuone,noselect shm+=c
-
 " }}}
 
 " Keymaps {{{
