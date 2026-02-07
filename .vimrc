@@ -7,17 +7,13 @@ set tags=./tags;,tags
 set undodir=~/.vim/undo undofile
 set foldmethod=marker foldmarker={{{,}}}
 
-let g:apc_enable_ft = {"*":1}
+let g:apc_enable_ft = {"*":1} | let g:apc_enable_tab = 0
 set cpt=.,k,w,b,t cot=menu,menuone,noselect shm+=c
 " }}}
 
 " Keymaps {{{
 nmap ? :find ./**/*
-
-nmap <space>n <cmd>bn<CR>
-nmap <space>p <cmd>bp<CR>
-nmap <space>w <cmd>bd<CR>
-
+nmap gb <cmd>ls<cr>:b<space>
 nmap <space>r <cmd>cope<CR>:AsyncRun 
 " }}}
 
@@ -26,7 +22,6 @@ call plug#begin()
 Plug 'skywind3000/vim-auto-popmenu'
 Plug 'cirnovsky/vim-dict'
 Plug 'cirnovsky/vim-gotoword'
-Plug '~/.vim/local/vim-tabline'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'github/copilot.vim'
 Plug 'skywind3000/asyncrun.vim'
