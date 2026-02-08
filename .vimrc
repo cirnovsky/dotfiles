@@ -2,10 +2,10 @@
 syntax enable
 filetype plugin indent on
 
-set ai si ci mouse=a is fo=cro re=0 nosc nocul noswapfile hid
+set ai si ci mouse=a is fo=cro re=0 nosc nocul noswf hid
 set tags=./tags;,tags
-set undodir=~/.vim/undo undofile
-set foldmethod=marker foldmarker={{{,}}}
+set udir=~/.vim/undo udf
+set fdm=marker fmr={{{,}}}
 
 let g:apc_enable_ft = {"*":1} | let g:apc_enable_tab = 0
 set cpt=.,k,w,b,t cot=menu,menuone,noselect shm+=c
@@ -13,7 +13,7 @@ set cpt=.,k,w,b,t cot=menu,menuone,noselect shm+=c
 
 " Keymaps {{{
 nmap ? :find ./**/*
-nmap gb <cmd>ls<cr>:b<space>
+nmap gb <cmd>ls<cr>:b
 nmap <space>r <cmd>cope<CR>:AsyncRun 
 " }}}
 
