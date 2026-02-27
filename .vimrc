@@ -15,9 +15,9 @@ autocmd filetype cpp set path+=/Library/Developer/CommandLineTools/SDKs/MacOSX.s
 " }}}
 
 " Keymaps {{{
-nmap ? :find ./**/*
 nmap gb <cmd>ls<cr>:b
 nmap <space>r <cmd>cope<CR>:AsyncRun 
+nmap <space>t <cmd>term<CR><C-w>J<C-w>12-
 " }}}
 
 " Plugins {{{
@@ -28,7 +28,6 @@ Plug 'cirnovsky/vim-gotoword'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'github/copilot.vim'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'tpope/vim-commentary'
 call plug#end()
 " }}}
 
