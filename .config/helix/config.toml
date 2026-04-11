@@ -1,9 +1,0 @@
-[editor]
-bufferline = "always"
-completion-timeout = 50
-
-[editor.soft-wrap]
-enable = true
-
-[editor.file-picker]
-hidden = true
