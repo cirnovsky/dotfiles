@@ -1,5 +1,5 @@
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages") t)
+	     '("melpa" . "https://melpa.org/packages/") t)
 
 (defvar rc/package-contents-refreshed nil)
 
@@ -10,8 +10,8 @@
 
 (defun rc/require-one-package (package)
   (when (not (package-install package))
-    (rc/package-refresh-contents-once)
-    (package-install package)))
+  (rc/package-refresh-contents-once)
+  (package-install package)))
 
 (defun rc/require (&rest packages)
   (dolist (package packages)

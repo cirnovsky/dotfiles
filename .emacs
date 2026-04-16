@@ -1,4 +1,5 @@
 (set-face-attribute 'default nil :height 160)
+(setq ns-pop-up-frames nil)
 (setq global-auto-revert-non-file-buffers 1)
 (setq custom-file "~/.emacs.custom.el")
 (setq create-lockfiles nil)
@@ -12,6 +13,8 @@
 (global-set-key (kbd "C-c p g") 'rgrep)
 (global-set-key (kbd "C-c d") 'duplicate-line)
 (global-set-key (kbd "C-c m") 'man)
+(keymap-set minibuffer-local-completion-map "C-;" 'minibuffer-next-completion)
+(keymap-set minibuffer-local-completion-map "C-'" 'minibuffer-previous-completion)
 (global-auto-revert-mode 1)
 
 (rc/require 'gruber-darker-theme)
