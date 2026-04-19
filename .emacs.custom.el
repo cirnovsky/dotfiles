@@ -4,9 +4,7 @@ k
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(emacs-libvterm gruber-darker-theme llama multiple-cursors transient
-		    vterm with-editor)))
+ '(package-selected-packages '(magit multiple-cursors pythonic uv-mode vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
