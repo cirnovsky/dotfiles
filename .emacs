@@ -30,6 +30,5 @@
 
 (rc/require 'magit)
 
-(rc/require 'pythonic)
 (rc/require 'uv-mode)
 (add-hook 'python-mode-hook #'uv-mode-auto-activate-hook)
