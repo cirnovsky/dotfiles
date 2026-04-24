@@ -16,8 +16,8 @@ echo
 for file in "$DOTFILES_DIR"/.* "$DOTFILES_DIR"/*; do
     base="$(basename "$file")"
 
-    # Skip current dir, parent dir, and installer itself
-    [[ "$base" == "." || "$base" == ".." || "$base" == "install.sh" || "$base" == ".git" || "$base" == "readme" ]] && continue
+    # Skip current dir, parent dir, installer itself, and backup files
+    [[ "$base" == "." || "$base" == ".." || "$base" == "install.sh" || "$base" == ".git" || "$base" == "readme" || "$base" == *"~" ]] && continue
 
     target="$HOME/$base"
 
