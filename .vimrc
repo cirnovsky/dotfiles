@@ -6,3 +6,5 @@ set udir=~/.vim/undo udf path+=** hid noswf
 set tags=./tags;,tags;
 
 nmap gb <cmd>ls<cr>:b
+
+set gp=git\ grep\ -n
