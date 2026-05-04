@@ -9,9 +9,10 @@
     (package-refresh-contents)))
 
 (defun rc/require-one-package (package)
-  (when (not (package-install package))
-  (rc/package-refresh-contents-once)
-  (package-install package)))
+  (condition-case nil
+      (package-install package)
+    (error (rc/package-refresh-contents-once)
+    (package-install package))))
 
 (defun rc/require (&rest packages)
   (dolist (package packages)

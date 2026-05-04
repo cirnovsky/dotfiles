@@ -28,8 +28,8 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (rc/require 'vterm)
-
 (rc/require 'magit)
+(rc/require 'markdown-mode)
 
 (rc/require 'uv-mode)
 (add-hook 'python-mode-hook #'uv-mode-auto-activate-hook)
