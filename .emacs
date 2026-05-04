@@ -1,13 +1,13 @@
 (set-face-attribute 'default nil :height 160)
+(xterm-mouse-mode 1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 (setq ns-pop-up-frames nil)
 (setq global-auto-revert-non-file-buffers 1)
 (setq custom-file "~/.emacs.custom.el")
 (setq create-lockfiles nil)
 (setq vc-follow-symlinks t)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(xterm-mouse-mode 1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
 (setopt use-short-answers t)
 
 (load "~/.emacs.rc/rc.el")
@@ -30,6 +30,10 @@
 (rc/require 'vterm)
 (rc/require 'magit)
 (rc/require 'markdown-mode)
+
+(rc/require 'move-text)
+(global-set-key (kbd "M-p") 'move-text-up)
+(global-set-key (kbd "M-n") 'move-text-down)
 
 (rc/require 'uv-mode)
 (add-hook 'python-mode-hook #'uv-mode-auto-activate-hook)
