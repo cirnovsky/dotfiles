@@ -30,6 +30,7 @@
 (rc/require 'vterm)
 (rc/require 'magit)
 (rc/require 'markdown-mode)
+(rc/require 'monokai-theme)
 
 (rc/require 'move-text)
 (global-set-key (kbd "M-p") 'move-text-up)
@@ -42,3 +43,8 @@
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
+
+					; Company-mode
+(rc/require 'company)
+(setq company-selection-wrap-around t)
+(add-hook 'after-init-hook 'global-company-mode)
