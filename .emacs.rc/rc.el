@@ -17,3 +17,8 @@
 (defun rc/require (&rest packages)
   (dolist (package packages)
     (rc/require-one-package package)))
+
+(defun rc/require-theme (theme)
+  (let ((theme-package (intern (concat (symbol-name theme) "-theme"))))
+  (rc/require theme-package)
+  (load-theme theme t)))

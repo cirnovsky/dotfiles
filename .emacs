@@ -30,7 +30,7 @@
 (rc/require 'vterm)
 (rc/require 'magit)
 (rc/require 'markdown-mode)
-(rc/require 'monokai-theme)
+(rc/require 'rust-mode)
 
 (rc/require 'move-text)
 (global-set-key (kbd "M-p") 'move-text-up)
@@ -38,6 +38,9 @@
 
 (rc/require 'uv-mode)
 (add-hook 'python-mode-hook #'uv-mode-auto-activate-hook)
+
+					; Theme
+(rc/require-theme 'gruvbox)
 
 					; Org-mode
 (global-set-key (kbd "C-c l") #'org-store-link)
