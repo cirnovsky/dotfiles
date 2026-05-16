@@ -17,9 +17,6 @@
 (global-set-key (kbd "C-c m") 'man)
 (keymap-set minibuffer-local-completion-map "C-;" 'minibuffer-next-completion)
 (keymap-set minibuffer-local-completion-map "C-'" 'minibuffer-previous-completion)
-(add-hook 'eglot-managed-mode-hook
-	  (lambda ()
-	    (keymap-set eglot-mode-map "C-c e r" 'eglot-rename)))
 (global-auto-revert-mode 1)
 
 (rc/require 'multiple-cursors)
@@ -51,3 +48,9 @@
 (rc/require 'company)
 (setq company-selection-wrap-around t)
 (add-hook 'after-init-hook 'global-company-mode)
+
+					; Eglot
+(add-hook 'eglot-managed-mode-hook
+	  (lambda ()
+	    (keymap-set eglot-mode-map "C-c e r" 'eglot-rename)))
+(add-hook 'prog-mode 'eglot-ensure)
