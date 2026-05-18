@@ -24,20 +24,22 @@
 (global-set-key (kbd "C-<") 'mc/mark-prev-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-(rc/require 'vterm)
-(rc/require 'magit)
-(rc/require 'markdown-mode)
-(rc/require 'rust-mode)
-
-(rc/require 'move-text)
-(global-set-key (kbd "M-p") 'move-text-up)
-(global-set-key (kbd "M-n") 'move-text-down)
-
-(rc/require 'uv-mode)
-(add-hook 'python-mode-hook #'uv-mode-auto-activate-hook)
-
-					; Theme
-(rc/require-theme 'gruvbox)
+(use-package typescript-mode :ensure t)
+(use-package markdown-mode :ensure t)
+(use-package magit :ensure t)
+(use-package move-text
+  :ensure t
+  :bind (("M-p" . move-text-up)
+	 ("M-n" . move-text-down)))
+(use-package uv-mode
+  :ensure t
+  :hook (python-mode . uv-mode-auto-activate-hook))
+(use-package gruvbox-theme
+  :ensure t
+  :config (load-theme 'gruvbox-dark-medium 1))
+(use-package xclip
+  :ensure t
+  :config (xclip-mode 1))
 
 					; Org-mode
 (global-set-key (kbd "C-c l") #'org-store-link)
@@ -54,3 +56,4 @@
 	  (lambda ()
 	    (keymap-set eglot-mode-map "C-c e r" 'eglot-rename)))
 (add-hook 'prog-mode 'eglot-ensure)
+
