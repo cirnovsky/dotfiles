@@ -10,8 +10,6 @@
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (setopt use-short-answers t)
 
-(load "~/.emacs.rc/rc.el")
-
 (global-set-key (kbd "C-c g") 'rgrep)
 (global-set-key (kbd "C-c d") 'duplicate-line)
 (global-set-key (kbd "C-c m") 'man)
@@ -19,10 +17,17 @@
 (keymap-set minibuffer-local-completion-map "C-'" 'minibuffer-previous-completion)
 (global-auto-revert-mode 1)
 
-(rc/require 'multiple-cursors)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-prev-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(use-package multiple-cursors
+  :ensure t
+  :custom (mc/always-run-for-all t)
+  :bind (("C->" . mc/mark-next-like-this)
+	 ("C-<" . mc/mark-prev-like-this)
+	 ("C-c C-<" . mc/mark-all-like-this)))
+
+(use-package company
+  :ensure t
+  :custom (company-selection-wrap-around t)
+  :hook (after-init-hook . global-company-mode))
 
 (use-package typescript-mode :ensure t)
 (use-package markdown-mode :ensure t)
@@ -46,10 +51,6 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
-					; Company-mode
-(rc/require 'company)
-(setq company-selection-wrap-around t)
-(add-hook 'after-init-hook 'global-company-mode)
 
 					; Eglot
 (add-hook 'eglot-managed-mode-hook
