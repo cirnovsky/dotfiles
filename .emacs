@@ -47,9 +47,9 @@
   :config (load-theme 'gruvbox-dark-medium 1))
 (use-package xclip
   :config (xclip-mode 1))
-(use-package typescript-mode :ensure t)
-(use-package markdown-mode :ensure t)
-(use-package magit :ensure t)
+(use-package typescript-mode)
+(use-package markdown-mode)
+(use-package magit)
 					; Org-mode
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
