@@ -28,10 +28,6 @@
   :ensure t
   :custom (company-selection-wrap-around t)
   :hook (after-init-hook . global-company-mode))
-
-(use-package typescript-mode :ensure t)
-(use-package markdown-mode :ensure t)
-(use-package magit :ensure t)
 (use-package move-text
   :ensure t
   :bind (("M-p" . move-text-up)
@@ -45,7 +41,9 @@
 (use-package xclip
   :ensure t
   :config (xclip-mode 1))
-
+(use-package typescript-mode :ensure t)
+(use-package markdown-mode :ensure t)
+(use-package magit :ensure t)
 					; Org-mode
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
