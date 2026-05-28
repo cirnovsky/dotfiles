@@ -37,6 +37,7 @@
 (use-package typescript-mode)
 (use-package markdown-mode)
 (use-package magit)
+
 (use-package move-text
   :bind (("M-p" . move-text-up)
 	 ("M-n" . move-text-down)))
@@ -46,7 +47,9 @@
   :config (load-theme 'gruvbox-dark-medium 1))
 (use-package xclip
   :config (xclip-mode 1))
-
+(use-package typescript-mode)
+(use-package markdown-mode)
+(use-package magit)
 					; Org-mode
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
