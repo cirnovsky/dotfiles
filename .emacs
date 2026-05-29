@@ -20,6 +20,7 @@
 (global-set-key (kbd "C-c g") 'rgrep)
 (global-set-key (kbd "C-c d") 'duplicate-line)
 (global-set-key (kbd "C-c m") 'man)
+(global-set-key (kbd "C-c r") 'recompile)
 (keymap-set minibuffer-local-completion-map "C-;" 'minibuffer-next-completion)
 (keymap-set minibuffer-local-completion-map "C-'" 'minibuffer-previous-completion)
 (global-auto-revert-mode 1)
