@@ -4,4 +4,8 @@
 .config/google-chrome
 .vim/.netrwhist
 .vim/undo/*
+.config/coc/
+.config/cagent/
+.config/zed/
+.vim/plugged/
 tags
