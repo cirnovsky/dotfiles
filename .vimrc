@@ -5,7 +5,7 @@ filetype plugin indent on
 set udir=~/.vim/undo udf path+=** hid noswf exrc secure is
 set tags=./tags;,tags;
 
-nmap gb <cmd>ls<cr>:b
+nmap gb <cmd>ls<cr>:b<space>
 
 set gp=git\ grep\ -n
 
