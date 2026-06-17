@@ -6,8 +6,6 @@
 
 (set-face-attribute 'default nil :height 160)
 (xterm-mouse-mode 1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
 (setq ns-pop-up-frames nil)
 (setq global-auto-revert-non-file-buffers 1)
 (setq custom-file "~/.emacs.custom.el")
@@ -21,19 +19,27 @@
 (global-set-key (kbd "C-c d") 'duplicate-line)
 (global-set-key (kbd "C-c m") 'man)
 (global-set-key (kbd "C-c r") 'recompile)
-(keymap-set minibuffer-local-completion-map "C-;" 'minibuffer-next-completion)
-(keymap-set minibuffer-local-completion-map "C-'" 'minibuffer-previous-completion)
+(keymap-set minibuffer-local-completion-map "M-;" 'minibuffer-next-completion)
+(keymap-set minibuffer-local-completion-map "M-'" 'minibuffer-previous-completion)
 (global-auto-revert-mode 1)
 
 (use-package multiple-cursors
   :custom (mc/always-run-for-all t)
-  :bind (("C->" . mc/mark-next-like-this)
-	 ("C-<" . mc/mark-prev-like-this)
-	 ("C-c C-<" . mc/mark-all-like-this)))
+  :bind (("C-;" . mc/mark-next-like-this)
+	 ("C-." . mc/mark-prev-like-this)
+	 ("C-c C-;" . mc/mark-all-like-this)))
 
 (use-package company
   :custom (company-selection-wrap-around t)
   :hook (after-init-hook . global-company-mode))
+
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+  :config
+  (evil-mode 1))
 
 (use-package typescript-mode)
 (use-package markdown-mode)
@@ -62,4 +68,3 @@
 	  (lambda ()
 	    (keymap-set eglot-mode-map "C-c e r" 'eglot-rename)))
 (add-hook 'prog-mode-hook 'eglot-ensure)
-

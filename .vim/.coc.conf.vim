@@ -1,12 +1,8 @@
-call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call plug#end()
-
 let g:coc_global_extensions = [
-  \ 'coc-pyright',
-  \ 'coc-clangd',
-  \ 'coc-tsserver',
-  \ ]
+			\ 'coc-pyright',
+			\ 'coc-clangd',
+			\ 'coc-tsserver',
+			\ ]
 
 call coc#config('diagnostic', {'enable': v:false})
 
@@ -16,8 +12,8 @@ set nowritebackup
 set updatetime=300
 
 " Completions
- inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " GoTo navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -29,11 +25,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
+	if CocAction('hasProvider', 'hover')
+		call CocActionAsync('doHover')
+	else
+		call feedkeys('K', 'in')
+	endif
 endfunction
 
 " Rename
