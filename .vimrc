@@ -16,3 +16,6 @@ nmap gb <cmd>ls<cr>:b<space>
 
 " lsp
 so ~/.vim/.coc.conf.vim
+
+" nerdtree
+let g:bex_show_hidden = 1
