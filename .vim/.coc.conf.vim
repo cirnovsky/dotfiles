@@ -2,7 +2,6 @@ let g:coc_global_extensions = ['coc-pyright', 'coc-clangd', 'coc-tsserver']
 
 call coc#config('diagnostic', {'enable': v:false})
 call coc#config('inlayHint', {'enable': v:false})
-call coc#config('suggest', {'autoTrigger': 'none', 'noselect': v:false})
 
 set ph=8
 set encoding=utf-8
@@ -13,6 +12,8 @@ set updatetime=300
 " completion
 inoremap <silent><expr> <C-n> coc#pum#visible() ? coc#pum#next(1) : coc#refresh()
 inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : '<C-p>'
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " goto 
 nmap <silent> gd <Plug>(coc-definition)

@@ -2,4 +2,10 @@
 [user]
 # Please adapt and uncomment the following lines:
 	name = cirnovsky
-	email = cirnovskyv@gmail.com
+	email = pup@guanyu.me
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
