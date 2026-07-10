@@ -100,16 +100,18 @@ function _todo_reminder --on-event fish_prompt
     if not set -q _todo_last_check; or test (math $now - $_todo_last_check) -ge 60
         set -g _todo_last_check $now
         set -g TODO_PENDING (count (_todo_lines))
-        test $TODO_PENDING -gt 0; and set_color yellow
-        and echo "todo: $TODO_PENDING pending (run `todo`)"
-        and set_color normal
+        if test $TODO_PENDING -gt 0
+            set_color yellow; echo "todo: $TODO_PENDING pending"; set_color normal
+            _todo_show
+        end
     end
 end
 
 if status is-interactive
     set -g TODO_PENDING (count (_todo_lines))
     set -g _todo_last_check (date +%s)
-    test $TODO_PENDING -gt 0; and set_color yellow
-    and echo "todo: $TODO_PENDING pending (run `todo`)"
-    and set_color normal
+    if test $TODO_PENDING -gt 0
+        set_color yellow; echo "todo: $TODO_PENDING pending"; set_color normal
+        _todo_show
+    end
 end

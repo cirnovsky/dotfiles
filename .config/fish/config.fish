@@ -65,3 +65,25 @@ if status is-interactive
     set -g _mail_last_check (date +%s)
     test $MAIL_UNREAD -gt 0; and set_color yellow; and echo "You have $MAIL_UNREAD new mail."; and set_color normal
 end
+
+# ── background fetch: a launchd agent runs getmail every 5 min ──
+# Installed once (first interactive shell that finds getmail); launchd then
+# auto-loads it every login. So new mail arrives without opening Vim, and the
+# "you have mail" check above sees it. `launchctl bootout gui/(id -u)/com.vim-mail.fetch`
+# + rm the plist to stop it; edit StartInterval below to change the cadence.
+set -l _mail_plist "$HOME/Library/LaunchAgents/com.vim-mail.fetch.plist"
+if status is-interactive; and command -v getmail >/dev/null; and not test -e $_mail_plist
+    mkdir -p (dirname $_mail_plist) "$HOME/Library/Logs"
+    printf '<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+    <key>Label</key><string>com.vim-mail.fetch</string>
+    <key>ProgramArguments</key>
+    <array><string>%s</string><string>--getmaildir</string><string>%s/.getmail</string><string>--rcfile</string><string>getmailrc</string></array>
+    <key>StartInterval</key><integer>300</integer>
+    <key>RunAtLoad</key><true/>
+    <key>StandardOutPath</key><string>%s/Library/Logs/vim-mail-fetch.log</string>
+    <key>StandardErrorPath</key><string>%s/Library/Logs/vim-mail-fetch.log</string>
+</dict></plist>\n' (command -v getmail) $HOME $HOME $HOME >$_mail_plist
+    launchctl bootstrap gui/(id -u) $_mail_plist 2>/dev/null
+end

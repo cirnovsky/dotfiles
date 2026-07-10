@@ -1,0 +1,6 @@
+{
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+  "pairs.disableLanguages": [],
+  "pairs.disableBuftypes": [],
+  "pairs.enableBackspace": true
+}

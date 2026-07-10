@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-pyright', 'coc-clangd', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-pyright', 'coc-clangd', 'coc-tsserver', 'coc-pairs']
 
 call coc#config('diagnostic', {'enable': v:false})
 call coc#config('inlayHint', {'enable': v:false})
