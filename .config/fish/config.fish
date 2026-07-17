@@ -18,14 +18,10 @@ test -f ~/.cargo/env.fish && source ~/.cargo/env.fish
 # ── Aliases (from .zshrc) ──
 alias ai="claude --dangerously-skip-permissions"
 
-# ── Environment variables (from .zshrc) ──
-# Secret values live in ~/.config/fish/conf.d/secrets.fish (gitignored, sourced
-# before this file). The lines below are commented indicators of which keys are
-# expected there — the actual values are NOT stored in this tracked file:
-#   set -gx OPENAI_API_KEY      "sk-or-v1-…"   → secrets.fish
-#   set -gx OPENROUTER_API_KEY  "sk-or-v1-…"   → secrets.fish
-#   set -gx HF_TOKEN            "hf_…"          → secrets.fish
+set -gx EDITOR     "vim"
+set -gx NNN_RM "trash"
 set -gx OPENAI_API_BASE     "https://openrouter.ai/api/v1"
+set -gx OPENAI_BASE_URL     "https://openrouter.ai/api/v1"
 set -gx OPENROUTER_BASE_URL "https://openrouter.ai/api/v1"
 set -gx VISION_MODEL        "google/gemini-2.5-flash"
 

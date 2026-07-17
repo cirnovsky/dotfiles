@@ -1,7 +1,7 @@
 " misc
 syntax enable
 filetype plugin indent on
-set udir=~/.vim/undo udf path+=** hid noswf exrc secure is ar
+set udir=~/.vim/undo udf path+=** hid noswf exrc secure is
 set gp=git\ grep\ -n
 let g:netrw_liststyle=1
 
@@ -24,7 +24,17 @@ let g:mail_from = "cirnovsky <pup@guanyu.me>"
 nmap <C-x> <cmd>ls<cr>:b<space>
 nmap <C-k> <cmd>bd<cr>
 nmap <C-s> :fin<space>
-nmap <esc>x q:i
+function! CopyPath()
+    if &filetype ==# 'netrw' | let fname = matchstr(getline('.'), '^\S\+') | let @+ = b:netrw_curdir . '/' . fname
+    else | let @+ = expand('%:p') | endif
+endfunction
+nmap <silent> <leader>y :call CopyPath()<CR>
 
 " lsp
 so ~/.vim/coc.vim
+
+" multicursor
+let g:VM_maps = {}
+let g:VM_maps["Add Cursor Down"]    = '<esc>j'   " new cursor down
+let g:VM_maps["Add Cursor Up"]      = '<esc>k'   " new cursor up
+let g:VM_maps["Exit"] = '<C-c>'
