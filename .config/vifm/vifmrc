@@ -11,9 +11,27 @@ if filereadable($VIFM.'/'.$OS)
     execute 'source' $VIFM.'/'.$OS
 endif
 
+fileviewer *.json,*.jsonl,*.ndjson jq -C . %c 2>/dev/null || cat %c
+set vicmd='vim -c "cd"'
+if executable('fd')
+    set findprg='fd --hidden --color never %p %s'
+endif
+if executable('rg')
+    set grepprg='rg --column --color never %i %a %s'
+endif
+nmap i :edit<cr>
 nmap . :set invdotfiles<CR>
 set viewcolumns=-8{size},-12{perms},-14{mtime},-{name}..
 set runexec
+
+command! create :
+\|  let $last_char = system('printf %s "%a" | tail -c 1')
+\|  if $last_char == "/"
+\|    mkdir "%a"
+\|  else
+\|    touch "%a"
+\|  endif
+nmap a :create<space>
 
 let $OPENER = system('command -v xdg-open || command -v open || echo open')
 nmap x :if filetype('.') == 'exe'

@@ -32,10 +32,10 @@ set -gx VISION_MODEL        "google/gemini-2.5-flash"
 # then use `nvm use`, `nvm install`, etc.
 set -gx NVM_DIR "$HOME/.nvm"
 
-# ── "you have mail" for ~/Mail/inbox ──
+# ── "you have mail" for ~/Mail/all/inbox ──
 # Each message is a directory; a message is "read" once it contains a `.read`
 # marker file. Unread = an inbox subdir with no `.read` inside.
-set -gx MAILDIR "$HOME/Mail/inbox"
+set -gx MAILDIR "$HOME/Mail/all/inbox"
 
 function _mail_unread_count
     set -l n 0
