@@ -1,0 +1,9 @@
+text/html; ~/.mutt/view-html-browser.py %s; nametemplate=%s.html
+
+text/html; w3m -I %{charset} -T text/html -dump -o display_link_number=1 %s; copiousoutput; nametemplate=%s.html
+
+image/*;         ~/.mutt/view-open.sh %s %t
+application/*;   ~/.mutt/view-open.sh %s %t
+audio/*;         ~/.mutt/view-open.sh %s %t
+video/*;         ~/.mutt/view-open.sh %s %t
+text/calendar;   ~/.mutt/view-open.sh %s %t

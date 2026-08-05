@@ -17,4 +17,7 @@
 .vim/plugged/
 .vim/undo/*
 
+__pycache__/
+*.pyc
+
 tags
