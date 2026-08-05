@@ -1,4 +1,6 @@
 " misc
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
 syntax enable
 filetype plugin indent on
 set udir=~/.vim/undo udf path+=** hid noswf exrc secure is
@@ -12,6 +14,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
+Plug 'vifm/vifm.vim'
 call plug#end()
 
 " keymaps

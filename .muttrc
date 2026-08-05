@@ -32,14 +32,5 @@ auto_view text/html                          # render HTML inline via w3m
 alternative_order text/plain text/html       # prefer plain text when both exist
 macro index,pager V "<pipe-message>~/.mutt/view-html-browser.sh<enter>" "open HTML in browser (inline images)"
 
-bind attach x view-mailcap
-
-macro index,pager \cb "<pipe-message> urlscan --dedupe<enter>" "list & open URLs from the message"
 macro index,pager A "<save-message>=[Gmail]/All<tab><enter>" "archive"
-# View the raw message in vim (mail-view.vim): decodes parts, toggles
-# text/plain <-> mailcapped text/html with `t`, opens cid-inlined HTML in the
-# browser with `gb`, opens the link/attachment under the cursor with `gx`, quits
-# with `q`. Feeds the whole raw MIME via pipe-message.
 macro index,pager e "<pipe-message>~/.mutt/mail-view.sh<enter>" "view message in vim"
-
-# vim: set ts=2 et sw=2

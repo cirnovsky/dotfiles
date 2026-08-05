@@ -31,7 +31,7 @@ command! create :
 \|  else
 \|    touch "%a"
 \|  endif
-nmap a :create<space>
+nmap o :create<space>
 
 let $OPENER = system('command -v xdg-open || command -v open || echo open')
 nmap x :if filetype('.') == 'exe'
