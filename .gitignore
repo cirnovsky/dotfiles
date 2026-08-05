@@ -20,4 +20,6 @@
 __pycache__/
 *.pyc
 
+.config/vifm/vifminfo.json
+
 tags
