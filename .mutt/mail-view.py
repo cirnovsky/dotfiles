@@ -12,10 +12,15 @@ prints one of several views to stdout:
                                            the message carries)
   mail-view.py render <raw.eml> html       the text/html body rendered through
                                            the mailcap "copiousoutput" entry
-                                           (w3m dump), i.e. "mailcapped" HTML
+                                           (w3m dump), i.e. "mailcapped" HTML;
+                                           each cid: image is tagged so the dump
+                                           shows a resolvable "[cid:<id>]" token
   mail-view.py attach <raw.eml> N          extract the Nth attachment (as listed
                                            in the render's "Attachments:" block)
                                            to a temp file and open it with the OS
+  mail-view.py attach-cid <raw.eml> CID    same, but locate the part by the cid:
+                                           reference under the cursor (the inline
+                                           images the body points at with cid:)
 
 Every render is prefixed with a short decoded header block (From/To/Subject/…)
 and, when the message carries attachments, followed by an "Attachments:" footer.
@@ -29,6 +34,7 @@ import email
 import email.policy
 import mimetypes
 import os
+import re
 import shlex
 import subprocess
 import sys
@@ -106,11 +112,43 @@ def mailcap_html_command():
     return DEFAULT_HTML_CMD
 
 
+_IMG_TAG = re.compile(r"<img\b[^>]*>", re.IGNORECASE)
+_IMG_SRC_CID = re.compile(r"""src\s*=\s*(["']?)cid:(?P<cid>[^"'>\s]+)\1""",
+                          re.IGNORECASE)
+_IMG_ALT = re.compile(r"""alt\s*=\s*("(?P<dq>[^"]*)"|'(?P<sq>[^']*)'|(?P<bare>[^\s>]*))""",
+                      re.IGNORECASE)
+
+
+def tag_cid_alt(html):
+    """Give every cid: <img> an alt text carrying its cid.
+
+    w3m's -dump renders an image as its alt text, or, when there is no alt, as an
+    anonymous '[cid]' (the URL scheme in brackets) that can't be traced back to a
+    part. Rewriting each cid: image's alt to '[cid:<id>]' (appended to any caption
+    it already has) makes the dump show a resolvable token the viewer's gx opens.
+    """
+    def rewrite(m):
+        tag = m.group(0)
+        src = _IMG_SRC_CID.search(tag)
+        if not src:
+            return tag
+        token = "[cid:{}]".format(src.group("cid"))
+        alt = _IMG_ALT.search(tag)
+        if alt:
+            existing = (alt.group("dq") or alt.group("sq")
+                        or alt.group("bare") or "").replace('"', "").strip()
+            newalt = "{} {}".format(existing, token) if existing else token
+            return tag[:alt.start()] + 'alt="{}"'.format(newalt) + tag[alt.end():]
+        # No alt attribute at all — insert one right after the opening '<img'.
+        return '<img alt="{}"'.format(token) + tag[4:]
+    return _IMG_TAG.sub(rewrite, html)
+
+
 def render_html(msg):
     part = body_part(msg, "text/html")
     if part is None:
         return None
-    html = decode_text(part)
+    html = tag_cid_alt(decode_text(part))
     charset = part.get_content_charset() or "utf-8"
     cmd = mailcap_html_command()
 
@@ -192,19 +230,61 @@ def attachment_lines(msg):
     return lines
 
 
+def normalize_cid(value):
+    """Strip a cid: reference or a Content-ID header down to its bare id."""
+    value = value.strip()
+    if value.lower().startswith("cid:"):
+        value = value[4:]
+    return value.strip().strip("<>").strip()
+
+
+def find_cid_part(msg, cid):
+    """The leaf part whose Content-ID matches the given cid reference, or None."""
+    target = normalize_cid(cid)
+    if not target:
+        return None
+    for part in msg.walk():
+        if part.is_multipart():
+            continue
+        raw = part.get("Content-ID")
+        if not raw:
+            continue
+        pid = normalize_cid(raw)
+        if pid == target or pid.lower() == target.lower():
+            return part
+    return None
+
+
+def open_part(part, idx):
+    """Write a part's decoded payload to a temp file and open it with the OS."""
+    name = os.path.basename(attachment_name(part, idx)) or f"attachment-{idx}"
+    tmpdir = tempfile.mkdtemp(prefix="mail-view-att-")
+    path = os.path.join(tmpdir, name)
+    with open(path, "wb") as fh:
+        fh.write(part.get_payload(decode=True) or b"")
+    subprocess.run(["open", path], check=False)
+
+
 def cmd_attach(msg, n):
     """Extract the nth attachment to a temp file and open it with the OS."""
     atts = attachment_parts(msg)
     if n < 1 or n > len(atts):
         sys.stderr.write(f"mail-view: no attachment {n}\n")
         sys.exit(1)
-    part = atts[n - 1]
-    name = os.path.basename(attachment_name(part, n)) or f"attachment-{n}"
-    tmpdir = tempfile.mkdtemp(prefix="mail-view-att-")
-    path = os.path.join(tmpdir, name)
-    with open(path, "wb") as fh:
-        fh.write(part.get_payload(decode=True) or b"")
-    subprocess.run(["open", path], check=False)
+    open_part(atts[n - 1], n)
+
+
+def cmd_attach_cid(msg, cid):
+    """Extract the inline part a cid: reference points at and open it."""
+    part = find_cid_part(msg, cid)
+    if part is None:
+        sys.stderr.write(f"mail-view: no attachment for cid {cid!r}\n")
+        sys.exit(1)
+    # Number it as it appears in the Attachments: block, for a sensible fallback
+    # filename; cid parts normally carry their own filename anyway.
+    atts = attachment_parts(msg)
+    idx = atts.index(part) + 1 if part in atts else 0
+    open_part(part, idx)
 
 
 def cmd_parts(msg):
@@ -242,6 +322,10 @@ def main():
 
     if action == "attach":
         cmd_attach(msg, int(sys.argv[3]) if len(sys.argv) > 3 else 0)
+        return
+
+    if action == "attach-cid":
+        cmd_attach_cid(msg, sys.argv[3] if len(sys.argv) > 3 else "")
         return
 
     sys.stderr.write(f"mail-view: unknown action {action!r}\n")

@@ -1,5 +1,5 @@
 set my_user = "cirnovskyv@gmail.com"
-set my_pass = "$MUTT_PASS"   # from ~/.config/fish/conf.d/secrets.fish (gitignored)
+set my_pass = "$MUTT_PASS"
 set my_from = "pup@guanyu.me"
 set header_cache = "~/.cache/mutt/headers"
 set message_cachedir = "~/.cache/mutt/bodies"
@@ -19,18 +19,13 @@ set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set trash     = "+[Gmail]/Bin"
 unset record            # Gmail files sent mail into [Gmail]/Sent Mail itself
-mailboxes = INBOX
 set imap_check_subscribed = yes
-set imap_keepalive = 300
 set mail_check = 60
 set ssl_force_tls = yes
-set header_cache     = ~/.cache/mutt/headers
-set message_cachedir = ~/.cache/mutt/bodies
 
 set mailcap_path = ~/.mutt/mailcap
 auto_view text/html                          # render HTML inline via w3m
 alternative_order text/plain text/html       # prefer plain text when both exist
-macro index,pager V "<pipe-message>~/.mutt/view-html-browser.sh<enter>" "open HTML in browser (inline images)"
 
 macro index,pager A "<save-message>=[Gmail]/All<tab><enter>" "archive"
 macro index,pager e "<pipe-message>~/.mutt/mail-view.sh<enter>" "view message in vim"
