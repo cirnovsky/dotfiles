@@ -16,12 +16,21 @@ fish_add_path --append ~/.local/bin   # added by pipx
 test -f ~/.cargo/env.fish && source ~/.cargo/env.fish
 
 # ── Aliases (from .zshrc) ──
-alias ai="claude --dangerously-skip-permissions"
+alias ai="codex --yolo"
 
 set -gx EDITOR     "vim"
 set -gx OPENAI_API_BASE     "https://openrouter.ai/api/v1"
 set -gx OPENAI_BASE_URL     "https://openrouter.ai/api/v1"
 set -gx OPENROUTER_BASE_URL "https://openrouter.ai/api/v1"
+
+# ── Claude Code via OpenRouter ──
+# Routes the `claude` CLI to OpenRouter's Anthropic-compatible endpoint.
+# NB: claude appends /v1/messages to ANTHROPIC_BASE_URL, so the base is
+# https://openrouter.ai/api (NOT /api/v1), and the key must be ANTHROPIC_API_KEY.
+set -gx ANTHROPIC_BASE_URL        "https://openrouter.ai/api"
+set -gx ANTHROPIC_API_KEY         "$OPENROUTER_API_KEY"
+set -gx ANTHROPIC_MODEL           "anthropic/claude-sonnet-5"
+set -gx ANTHROPIC_SMALL_FAST_MODEL "anthropic/claude-haiku-4.5"
 
 # ── nvm (from .zprofile) ──
 # nvm is a bash/zsh shell function and does NOT work natively in fish.

@@ -7,21 +7,24 @@ set editor="vim -c 'set spell spelllang=en' -c 'set tw=72'"
 set from = $my_from
 set use_from = yes
 set envelope_from = yes
+set wait_key = no
 
 set smtp_url  = "smtp://cirnovskyv%40gmail.com@smtp.gmail.com:587/"
 set smtp_pass = $my_pass
 set smtp_authenticators = "login:plain"
 
-set imap_user = $my_user
-set imap_pass = $my_pass
-set folder    = "imaps://imap.gmail.com/"
+# mail is synced to a local Maildir by mbsync (see ~/.mbsyncrc);
+# launchd agent auto-fetches every 5 min, press `I` to sync manually.
+set folder    = "~/Mail"
 set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set trash     = "+[Gmail]/Bin"
+set mbox_type = Maildir
 unset record            # Gmail files sent mail into [Gmail]/Sent Mail itself
-set imap_check_subscribed = yes
-set mail_check = 60
+set mail_check = 5
 set ssl_force_tls = yes
+
+macro index,pager I "!mbsync -q -a<enter>" "sync mail (mbsync)"
 
 set mailcap_path = ~/.mutt/mailcap
 auto_view text/html                          # render HTML inline via w3m
