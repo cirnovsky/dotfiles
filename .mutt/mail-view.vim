@@ -17,6 +17,9 @@
 "       a 'cid:<id>' reference (as the text/plain body writes inline images)
 "       opens the inline part it points at
 "   q   quit vim
+"   D   delete this mail (mutt's <delete-message>) and show the next one
+"   J   show the next undeleted mail
+"   K   show the previous undeleted mail
 "
 " State is kept per-buffer so several messages can be open at once:
 "   b:mailview_raw    path to the raw .eml
@@ -200,11 +203,24 @@ function! s:Syntax() abort
   highlight default link mailViewCid  Special
 endfunction
 
+" Have mutt do a:action ('delete'/'next'/'prev') and show the message it lands
+" on.  mail-view.sh reads the request from one fifo, pushes the mutt keys and
+" exits; mutt pipes the resulting message into a new mail-view.sh, which
+" overwrites b:mailview_raw and answers on the other fifo.  vim's system()
+" leaves the terminal alone while it waits, so mutt is free to work meanwhile.
+function! MailViewMove(action) abort
+  call system('echo ' . a:action . ' > ' . g:mailview_req . '; cat ' . g:mailview_rsp)
+  redraw!   " mutt's endwin() moved the cursor behind our back
+  call MailViewOpen(b:mailview_raw)
+endfunction
+autocmd VimLeavePre * if exists('g:mailview_req') | call system('echo quit > ' . g:mailview_req) | endif
+
 function! s:Status() abort
   let others = filter(copy(b:mailview_avail), 'v:val !=# b:mailview_mode')
   let hint = empty(others) ? '' : ' (t: switch to ' . others[0] . ')'
   let wrap = get(b:, 'mailview_wrap', 0) ? '  gw: unwrap' : '  gw: wrap'
-  echo 'mail-view [' . b:mailview_mode . ']' . hint . wrap . '  gb: browser  gx: open  q: quit'
+  echo strpart('mail-view [' . b:mailview_mode . ']' . hint . wrap
+        \ . '  gb: browser  gx: open  D: delete  J/K: next/prev  q: quit', 0, v:echospace)
 endfunction
 
 function! MailViewOpen(raw) abort
@@ -225,6 +241,9 @@ function! MailViewOpen(raw) abort
   nnoremap <buffer> <silent> gb :call MailViewBrowser()<CR>
   nnoremap <buffer> <silent> gx :call MailViewGx()<CR>
   nnoremap <buffer> <silent> q  :qa!<CR>
+  nnoremap <buffer> <silent> D  :call MailViewMove('delete')<CR>
+  nnoremap <buffer> <silent> J  :call MailViewMove('next')<CR>
+  nnoremap <buffer> <silent> K  :call MailViewMove('prev')<CR>
 
   " Prefer text/plain (matching mutt's alternative_order), else whatever exists.
   call MailViewRender(index(b:mailview_avail, 'plain') >= 0 ? 'plain' : b:mailview_avail[0])

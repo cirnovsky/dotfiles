@@ -31,4 +31,5 @@ auto_view text/html                          # render HTML inline via w3m
 alternative_order text/plain text/html       # prefer plain text when both exist
 
 macro index,pager A "<save-message>=[Gmail]/All<tab><enter>" "archive"
-macro index,pager e "<pipe-message>~/.mutt/mail-view.sh<enter>" "view message in vim"
+# the sourced rc is written by mail-view.sh: it carries the D/J/K action chosen in vim
+macro index,pager e "<pipe-message>~/.mutt/mail-view.sh<enter><enter-command>source ~/.cache/mutt/mail-view-next.rc<enter>" "view message in vim"
