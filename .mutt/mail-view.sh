@@ -21,15 +21,20 @@
 # endwin() in between changes nothing visible.
 dir="$(cd "$(dirname "$0")" && pwd)"
 next="$HOME/.cache/mutt/mail-view-next.rc"
-run="$HOME/.cache/mutt/mail-view/$(basename "$(tty < /dev/tty)")"
+tty="$(ps -o tty= -p $$ | tr -d ' ')"     # `tty < /dev/tty` just says /dev/tty
+run="$HOME/.cache/mutt/mail-view/$tty"
 raw="$run/msg.eml" req="$run/req" rsp="$run/rsp" pidfile="$run/pid"
 mkdir -p "$run"
 cat > "$raw"
 
+# A vim whose terminal was closed lives on as an orphan (tty "??"), blocked in
+# its VimLeavePre write to $req; it will never read $rsp, so only reuse a vim
+# that is still on our tty, and clear out anything left on the old fifos.
 vpid="$(cat "$pidfile" 2>/dev/null)"
-if [ -n "$vpid" ] && kill -0 "$vpid" 2>/dev/null; then
+if [ -n "$vpid" ] && [ "$(ps -o tty= -p "$vpid" 2>/dev/null | tr -d ' ')" = "$tty" ]; then
     echo load > "$rsp"                    # wake the vim waiting in MailViewMove()
 else
+    pkill -9 -f "$req" 2>/dev/null
     rm -f "$req" "$rsp"
     mkfifo "$req" "$rsp"
     vim -R --cmd 'set t_ti= t_te=' \

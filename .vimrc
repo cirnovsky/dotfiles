@@ -1,8 +1,9 @@
 " misc
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
+filetype plugin indent on
 sy enable
-set udir=~/.vim/undo udf path+=** hid noswf exrc secure is ai ci si gp=git\ grep\ -n
+set udir=~/.vim/undo udf path+=** hid noswf exrc secure is ai ci si
 
 " lsp
 so ~/.vim/coc.vim

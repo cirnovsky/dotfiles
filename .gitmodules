@@ -14,3 +14,6 @@
 	path = .vim/pack/plugins/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim
 	branch = release
+[submodule ".vim/pack/plugins/start/sleuth"]
+	path = .vim/pack/plugins/start/sleuth
+	url = https://github.com/tpope/vim-sleuth
