@@ -2,6 +2,7 @@
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 let g:python_indent = #{open_paren: 'shiftwidth()', continue: 'shiftwidth()', closed_paren_align_last_line: 0}
+set cinoptions+=j1,(0,ws,Ws
 filetype plugin indent on
 sy enable
 set udir=~/.vim/undo udf path+=** hid noswf exrc secure is ai ci gp=rg\ --vimgrep
