@@ -2,24 +2,19 @@
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 let g:python_indent = #{open_paren: 'shiftwidth()', continue: 'shiftwidth()', closed_paren_align_last_line: 0}
+set cinoptions+=j1,(0,ws,Ws
 filetype plugin indent on
 sy enable
 set udir=~/.vim/undo udf path+=** hid noswf exrc secure is ai ci gp=rg\ --vimgrep
 
-" lsp
-so ~/.vim/coc.vim
+" code navigation (ctags + gtags)
+so ~/.vim/tags.vim
 
 " keymaps
 nmap <C-x> <cmd>ls<cr>:b<space>
 nmap <C-k> <cmd>bd<cr>
 nmap <C-s> :fin<space>
-function! CopyPath()
-    if &filetype ==# 'netrw' | let fname = matchstr(getline('.'), '^\S\+') | let @+ = b:netrw_curdir . '/' . fname
-    else | let @+ = expand('%:p') | endif
-endfunction
-nmap <silent> <leader>y :call CopyPath()<CR>
-
-" lsp
+nmap <silent> <leader>y <cmd>let @+ = expand('%:p')<cr>
 
 " multicursor
 let g:VM_maps = {}
