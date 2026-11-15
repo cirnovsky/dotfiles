@@ -42,7 +42,10 @@ function! s:Update() abort
   if empty(root) || !filereadable(root . '/GTAGS') | return | endif
   call s:Run('global --single-update ' . shellescape(expand('%:p')) . '; ' . s:ctags, root)
 endfunction
-augroup tagsvim | au! | au BufWritePost * call s:Update() | augroup END
+augroup tagsvim
+  au!
+  au BufWritePost * call s:Update()
+augroup END
 
 " ---- references via global -> quickfix (no cursor jump) ------------------
 " flags: -r refs, -d defs, -s symbols with no definition (locals, attrs)
@@ -73,4 +76,7 @@ endfunction
 nnoremap gr <cmd>call <SID>Refs(expand('<cword>'), 0)<bar>cwindow<cr>
 nnoremap <leader>rn <cmd>call <SID>Rename()<cr>
 " format with gq: formatprg per filetype
-au FileType c,cpp,java setlocal formatprg=clang-format\ --assume-filename=%
+augroup formatprg
+  au!
+  au FileType c,cpp,java setlocal formatprg=clang-format\ --assume-filename=%
+augroup END

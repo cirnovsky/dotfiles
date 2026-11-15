@@ -1,15 +1,3 @@
-[submodule ".vim/pack/plugins/start/vim-commentary"]
-	path = .vim/pack/plugins/start/vim-commentary
-	url = https://github.com/tpope/vim-commentary
-[submodule ".vim/pack/plugins/start/vim-surround"]
-	path = .vim/pack/plugins/start/vim-surround
-	url = https://github.com/tpope/vim-surround
-[submodule ".vim/pack/plugins/start/vim-visual-multi"]
-	path = .vim/pack/plugins/start/vim-visual-multi
-	url = https://github.com/mg979/vim-visual-multi
 [submodule ".vim/pack/plugins/start/vifm.vim"]
 	path = .vim/pack/plugins/start/vifm.vim
 	url = https://github.com/vifm/vifm.vim
-[submodule ".vim/pack/plugins/start/sleuth"]
-	path = .vim/pack/plugins/start/sleuth
-	url = https://github.com/tpope/vim-sleuth
